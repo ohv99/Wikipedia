@@ -1,0 +1,43 @@
+﻿@page
+@model Wikipedia.Pages.Posts.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Posts</h1>
+
+<p>
+    <a asp-page="Create">Crear Nuevo Post</a>
+</p>
+<div class="row">
+    <div class="col-sm-6">
+                  @foreach (var item in Model.Post) {
+            <div class="card">
+                <div class="card-header"><h5 class="card-title">@Html.DisplayFor(modelItem => item.Titulo)</h5></div>
+                <div class="card-body">
+                @Html.DisplayFor(modelItem => item.Contenido)
+                @Html.DisplayFor(modelItem => item.Fecha)
+                @Html.DisplayFor(modelItem => item.Categoria.Nombre)
+                @Html.DisplayFor(modelItem => item.Tag.Nombre)
+                    <div class="card-footer bg-transparent border-success">
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Detalles</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Eliminar</a>
+                    </div>
+                    </div>
+                </div>
+    
+
+                    
+     
+                }
+        </div>
+                
+  
+		
+
+</div>
+
+
+

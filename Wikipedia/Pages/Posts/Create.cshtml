@@ -1,0 +1,77 @@
+﻿@page
+@model Wikipedia.Pages.Posts.CreateModel
+
+@{
+	ViewData["Title"] = "Crear";
+}
+
+<h1>Crear</h1>
+
+<h4>Post</h4>
+<hr />
+<div class="row">
+	<div class="col-md-12">
+		<form method="post">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="container text-left">
+				<div class="row align-items-start">
+					<div class="col">
+						<label asp-for="Post.Titulo" class="control-label"></label>
+						<input asp-for="Post.Titulo" class="form-control" />
+						<span asp-validation-for="Post.Titulo" class="text-danger"></span>
+					</div>
+					<div class="col">
+						<label asp-for="Post.Contenido" class="control-label"></label>
+						<input asp-for="Post.Contenido" class="form-control" />
+						<span asp-validation-for="Post.Contenido" class="text-danger"></span>
+					</div>
+				</div>
+			</div>
+			<br>
+			<div class="container text-left">
+				<div class="row align-items-start">
+					<div class="col">
+						<label asp-for="Post.Fecha" class="control-label"></label>
+						<input asp-for="Post.Fecha" class="form-control" />
+						<span asp-validation-for="Post.Fecha" class="text-danger"></span>
+					</div>
+					<div class="col">
+						<label asp-for="Post.CategoriaId" class="control-label">Categoria</label>
+						<select asp-for="Post.CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId">
+							<option value="" disabled="" selected="">Selecciona una categoria</option>
+						</select>
+					</div>
+				
+					<br>
+					<br>
+					<br>
+				<div>
+
+						<label asp-for="Post.TagId" class="control-label">Etiquetas</label>
+						<select asp-for="Post.TagId" class="form-control" asp-items="ViewBag.TagId">
+							<option value="" disabled="" selected="">Selecciona una Etiqueta</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<br>
+			<div class="d-grid gap-2 col-6 mx-auto">
+				<input type="submit" value="Crear" class="btn btn-primary" />
+			</div>
+
+
+
+		</form>
+	
+</div>
+</div>
+
+<div>
+	<a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+	}
