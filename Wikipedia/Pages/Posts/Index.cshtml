@@ -10,34 +10,45 @@
 <p>
     <a asp-page="Create">Crear Nuevo Post</a>
 </p>
-<div class="row">
-    <div class="col-sm-6">
-                  @foreach (var item in Model.Post) {
-            <div class="card">
-                <div class="card-header"><h5 class="card-title">@Html.DisplayFor(modelItem => item.Titulo)</h5></div>
+
+<div class="card-group">
+     
+                       @foreach (var item in Model.Post)
+            {      
+        <div class="card w-50">
+
                 <div class="card-body">
+                <h5 class="card-header">@Html.DisplayFor(modelItem => item.Titulo)</h5>
+                <p>
                 @Html.DisplayFor(modelItem => item.Contenido)
+                <br>
                 @Html.DisplayFor(modelItem => item.Fecha)
+                <br>
                 @Html.DisplayFor(modelItem => item.Categoria.Nombre)
+                <br>
                 @Html.DisplayFor(modelItem => item.Tag.Nombre)
-                    <div class="card-footer bg-transparent border-success">
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Editar</a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id">Detalles</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Eliminar</a>
+                <br>
+                </p>
+                    <div class="card-footer">
+                        <small class="text-muted">
+                            <a asp-page="./Edit" asp-route-id="@item.Id">Editar</a> |
+                            <a asp-page="./Details" asp-route-id="@item.Id">Detalles</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.Id">Eliminar</a>
+                        </small>
+               
                     </div>
-                    </div>
-                </div>
+               
+                    
+                    
+                   </div>
+                
     
 
                     
-     
-                }
-        </div>
+      
                 
-  
-		
-
-</div>
-
+        </div>
+        }
+    </div>
 
 

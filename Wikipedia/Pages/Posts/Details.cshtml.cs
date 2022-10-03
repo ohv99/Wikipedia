@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Wikipedia.Data;
 using Wikipedia.Models;
 
@@ -37,6 +39,10 @@ namespace Wikipedia.Pages.Posts
             {
                 Post = post;
             }
+            ViewData["Tag"] = new SelectList(_context.Tags, "Id", "Nombre"); 
+            var postInfo = _context.Categorias.Where(x => x.Id == post.CategoriaId).FirstOrDefaultAsync();
+            //ViewData["Categoria"] = postInfo.
+
             return Page();
         }
     }
